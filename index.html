@@ -524,36 +524,38 @@
     <div class="snackbars" id="form-output-global"></div>
   
     <!---  MODAL TAMPILAN LAYAR KONFIRMASI --->
-    <div id="modalKonfirmasi">
-      <div class="modal-box">
+    <div id="modalKonfirmasi" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+      <div style="background:white; padding:20px; border-radius:8px; max-width:400px; text-align:center;">
+        
+        <!-- Pertanyaan awal -->
         <div id="bagianPertanyaan">
           <p><strong>Apakah Anda sudah pernah menjadi member Herbalife?</strong></p>
-          <div style="margin-top:10px;">
-            <button onclick="jawabanKonfirmasi(true)" class="button button-primary">YA</button>
-            <button onclick="jawabanKonfirmasi(false)" class="button button-primary">TIDAK</button>
-          </div>
+          <button onclick="jawabanKonfirmasi(true)" class="button button-primary">YA</button>
+          <button onclick="jawabanKonfirmasi(false)" class="button button-primary">TIDAK</button>
         </div>
-        <div id="pesanKonfirmasi" style="margin-top:20px;"></div>
+    
+        <!-- Pesan hasil pilihan -->
+        <div id="pesanKonfirmasi" style="display:none; margin-top:20px;"></div>
+    
       </div>
     </div>
     
-    <script src="js/core.min.js"></script>
-    <script src="js/script.js"></script>
-    
-    // MODAL UNTUK MENAMPILKAN LAYAR KONFIRMASI
+    <!-- SCRIPT MODAL -->
     <script>
       let linkTujuan = "";
       function tampilkanKonfirmasi(link) {
         linkTujuan = link;
         document.getElementById("modalKonfirmasi").style.display = "flex";
+        document.getElementById("bagianPertanyaan").style.display = "block";
+        document.getElementById("pesanKonfirmasi").style.display = "none";
         document.getElementById("pesanKonfirmasi").innerHTML = "";
-        document.getElementById("bagianPertanyaan").style.display = "block"; // tampilkan kembali jika modal dibuka ulang
       }
     
       function jawabanKonfirmasi(isMember) {
-        document.getElementById("bagianPertanyaan").style.display = "none"; // sembunyikan pertanyaan
-    
+        document.getElementById("bagianPertanyaan").style.display = "none";
         const pesan = document.getElementById("pesanKonfirmasi");
+        pesan.style.display = "block";
+    
         if (isMember) {
           pesan.innerHTML = `
             <p>Hubungi sponsor anda untuk info lebih lanjut</p>
@@ -575,6 +577,8 @@
         window.location.href = linkTujuan;
       }
     </script>
-
+    
+    <script src="js/core.min.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
