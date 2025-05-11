@@ -127,9 +127,8 @@
               <!--TIDAK AKTIF
               <a class="wow fadeInRight button button-primary button-md" href="https://api.whatsapp.com/send?phone=6281241318600&text=Halo+kak%2C+saya+ingin+info+tentang+%3A%0A1.+Klub+Nutrisi%0A2.+Weight+loss+challenge%0APilih+info+%3A+.+.+.+.+." target= "_blank">Tanya Coach</a>
               -->
-              <a href="#" onclick="tampilkanKonfirmasi('https://api.whatsapp.com/send?phone=6281241318600&text=Halo+kak%2C+saya+ingin+info+tentang+%3A%0A1.+Klub+Nutrisi%0A2.+Weight+loss+challenge%0APilih+info+%3A+.+.+.+.+.'); return false;" class="button button-primary button-md">Tanya Coach</a>
-      
-      <!--Bagian Layanan-->
+              <a href="#" onclick="tampilkanKonfirmasi('https://api.whatsapp.com/send?phone=6281241318600&text=Halo+kak,+saya+ingin+info+tentang+Klub+Nutrisi'); return false;" class="button button-primary button-md">Tanya Coach</a>
+              
       <section class="section section-lg" id="services" data-type="anchor">
         <div class="container">
           <div class="row row-50 justify-content-start">
@@ -269,7 +268,7 @@
                 <!--TIDAK AKTIF
                 <a class="button button-primary button-md" href="https://api.whatsapp.com/send?phone=6281241318600&text=Halo+kak%2C+saya+ingin+info+tentang+%3A%0ALomba%20Turun%20Berat%20Badan" target="_blank">Bergabung</a>
                 -->
-                <a href="#" onclick="tampilkanKonfirmasi('https://api.whatsapp.com/send?phone=6281241318600&text=Halo+kak%2C+saya+ingin+info+tentang+%3A%0ALomba%20Turun%20Berat%20Badan'); return false;" class="button button-primary button-md">Bergabung</a>
+                <a href="#" onclick="tampilkanKonfirmasi('https://api.whatsapp.com/send?phone=6281241318600&text=Halo+kak,+saya+ingin+gabung+di+Weight+Loss+Challenge'); return false;" class="button button-primary button-md">Bergabung</a>
               
               </div>
             </div>
@@ -526,17 +525,17 @@
     <script src="js/script.js"></script>
             
     <!---  MODAL TAMPILAN LAYAR KONFIRMASI --->
-    <div id="modalKonfirmasi" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
-      <div style="background:white; padding:20px; border-radius:8px; max-width:400px; text-align:center;">
+    <div id="modalKonfirmasi" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); z-index:9999;">
+      <div style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%); background:#fff; padding:25px; border-radius:10px; width:90%; max-width:400px; box-shadow: 0 0 10px rgba(0,0,0,0.5); text-align:center;">
         
         <!-- Pertanyaan awal -->
         <div id="bagianPertanyaan">
           <p><strong>Apakah Anda sudah pernah menjadi member Herbalife?</strong></p>
-          <button onclick="jawabanKonfirmasi(true)" class="button button-primary">YA</button>
-          <button onclick="jawabanKonfirmasi(false)" class="button button-primary">TIDAK</button>
+          <button onclick="jawabanKonfirmasi(true)" class="button button-primary" style="margin: 10px;">YA</button>
+          <button onclick="jawabanKonfirmasi(false)" class="button button-primary" style="margin: 10px;">TIDAK</button>
         </div>
     
-        <!-- Pesan hasil pilihan -->
+        <!-- Pesan setelah jawaban -->
         <div id="pesanKonfirmasi" style="display:none; margin-top:20px;"></div>
     
       </div>
@@ -545,9 +544,10 @@
     <!-- SCRIPT MODAL -->
     <script>
       let linkTujuan = "";
+    
       function tampilkanKonfirmasi(link) {
         linkTujuan = link;
-        document.getElementById("modalKonfirmasi").style.display = "flex";
+        document.getElementById("modalKonfirmasi").style.display = "block";
         document.getElementById("bagianPertanyaan").style.display = "block";
         document.getElementById("pesanKonfirmasi").style.display = "none";
         document.getElementById("pesanKonfirmasi").innerHTML = "";
@@ -561,12 +561,12 @@
         if (isMember) {
           pesan.innerHTML = `
             <p>Hubungi sponsor anda untuk info lebih lanjut</p>
-            <button onclick="tutupModal()" class="button button-primary">OK</button>
+            <button onclick="tutupModal()" class="button button-primary" style="margin-top:10px;">OK</button>
           `;
         } else {
           pesan.innerHTML = `
             <p>Kami siap membantu untuk info lebih lanjut</p>
-            <button onclick="lanjutKeLink()" class="button button-primary">LANJUT</button>
+            <button onclick="lanjutKeLink()" class="button button-primary" style="margin-top:10px;">LANJUT</button>
           `;
         }
       }
@@ -579,5 +579,6 @@
         window.location.href = linkTujuan;
       }
     </script>
+
   </body>
 </html>
