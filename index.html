@@ -501,55 +501,54 @@
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
   
-<!-- MODAL KONFIRMASI -->
-<div id="modalKonfirmasi" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); z-index:9999;">
-  <div style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%); background:#fff; padding:25px; border-radius:10px; width:90%; max-width:400px; box-shadow: 0 0 10px rgba(0,0,0,0.5); text-align:center;">
-    <div id="bagianPertanyaan">
-      <p><strong>Apakah Anda sudah pernah menjadi member Herbalife?</strong></p>
-      <button onclick="jawabanKonfirmasi(true)" class="button button-primary" style="margin: 10px;">YA</button>
-      <button onclick="jawabanKonfirmasi(false)" class="button button-primary" style="margin: 10px;">TIDAK</button>
+    <!-- TAMPILAN MODAL KONFIRMASI -->
+    <div id="modalKonfirmasi" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); z-index:9999;">
+      <div style="position: absolute; top:50%; left:50%; transform: translate(-50%, -50%); background:#fff; padding:25px; border-radius:10px; width:90%; max-width:400px; box-shadow: 0 0 10px rgba(0,0,0,0.5); text-align:center;">
+        <div id="bagianPertanyaan">
+          <p><strong>Apakah Anda sudah pernah menjadi member Herbalife?</strong></p>
+          <button onclick="jawabanKonfirmasi(true)" class="button button-primary" style="margin: 10px;">YA</button>
+          <button onclick="jawabanKonfirmasi(false)" class="button button-primary" style="margin: 10px;">TIDAK</button>
+        </div>
+        <div id="pesanKonfirmasi" style="display:none; margin-top:20px;"></div>
+      </div>
     </div>
-    <div id="pesanKonfirmasi" style="display:none; margin-top:20px;"></div>
-  </div>
-</div>
-
-<script>
-  let linkTujuan = "";
-
-  function tampilkanKonfirmasi(link) {
-    linkTujuan = link;
-    document.getElementById("modalKonfirmasi").style.display = "block";
-    document.getElementById("bagianPertanyaan").style.display = "block";
-    document.getElementById("pesanKonfirmasi").style.display = "none";
-    document.getElementById("pesanKonfirmasi").innerHTML = "";
-  }
-
-  function jawabanKonfirmasi(isMember) {
-    document.getElementById("bagianPertanyaan").style.display = "none";
-    const pesan = document.getElementById("pesanKonfirmasi");
-    pesan.style.display = "block";
-
-    if (isMember) {
-      pesan.innerHTML = `
-        <p>Hubungi sponsor anda untuk info lebih lanjut</p>
-        <button onclick="tutupModal()" class="button button-primary" style="margin-top:10px;">OK</button>
-      `;
-    } else {
-      pesan.innerHTML = `
-        <p>Kami siap membantu untuk info lebih lanjut</p>
-        <button onclick="lanjutKeLink()" class="button button-primary" style="margin-top:10px;">LANJUT</button>
-      `;
-    }
-  }
-
-  function tutupModal() {
-    document.getElementById("modalKonfirmasi").style.display = "none";
-  }
-
-  function lanjutKeLink() {
-    window.location.href = linkTujuan;
-  }
-</script>
-
+    
+    <!-- SCRIPT UNTUK MODAL KONFIRMASI -->
+    <script>
+      let linkTujuan = "";
+      function tampilkanKonfirmasi(link) {
+        linkTujuan = link;
+        document.getElementById("modalKonfirmasi").style.display = "block";
+        document.getElementById("bagianPertanyaan").style.display = "block";
+        document.getElementById("pesanKonfirmasi").style.display = "none";
+        document.getElementById("pesanKonfirmasi").innerHTML = "";
+      }
+    
+      function jawabanKonfirmasi(isMember) {
+        document.getElementById("bagianPertanyaan").style.display = "none";
+        const pesan = document.getElementById("pesanKonfirmasi");
+        pesan.style.display = "block";
+    
+        if (isMember) {
+          pesan.innerHTML = `
+            <p>Hubungi sponsor anda untuk info lebih lanjut</p>
+            <button onclick="tutupModal()" class="button button-primary" style="margin-top:10px;">OK</button>
+          `;
+        } else {
+          pesan.innerHTML = `
+            <p>Kami siap membantu anda, untuk info lebih lanjut</p>
+            <button onclick="lanjutKeLink()" class="button button-primary" style="margin-top:10px;">LANJUT</button>
+          `;
+        }
+      }
+    
+      function tutupModal() {
+        document.getElementById("modalKonfirmasi").style.display = "none";
+      }
+    
+      function lanjutKeLink() {
+        window.location.href = linkTujuan;
+      }
+    </script>
 </body>
 </html>
