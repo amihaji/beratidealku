@@ -526,16 +526,17 @@
     <!---  MODAL TAMPILAN LAYAR KONFIRMASI --->
     <div id="modalKonfirmasi">
       <div class="modal-box">
-        <p><strong>Apakah Anda sudah pernah menjadi member Herbalife?</strong></p>
-        <div style="margin-top:10px;">
-          <button onclick="jawabanKonfirmasi(true)" class="button button-primary">YA</button>
-          <button onclick="jawabanKonfirmasi(false)" class="button button-primary">TIDAK</button>
+        <div id="bagianPertanyaan">
+          <p><strong>Apakah Anda sudah pernah menjadi member Herbalife?</strong></p>
+          <div style="margin-top:10px;">
+            <button onclick="jawabanKonfirmasi(true)" class="button button-primary">YA</button>
+            <button onclick="jawabanKonfirmasi(false)" class="button button-primary">TIDAK</button>
+          </div>
         </div>
         <div id="pesanKonfirmasi" style="margin-top:20px;"></div>
       </div>
     </div>
-
-
+    
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
     
@@ -546,9 +547,12 @@
         linkTujuan = link;
         document.getElementById("modalKonfirmasi").style.display = "flex";
         document.getElementById("pesanKonfirmasi").innerHTML = "";
+        document.getElementById("bagianPertanyaan").style.display = "block"; // tampilkan kembali jika modal dibuka ulang
       }
     
       function jawabanKonfirmasi(isMember) {
+        document.getElementById("bagianPertanyaan").style.display = "none"; // sembunyikan pertanyaan
+    
         const pesan = document.getElementById("pesanKonfirmasi");
         if (isMember) {
           pesan.innerHTML = `
