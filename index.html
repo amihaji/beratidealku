@@ -528,13 +528,14 @@
         document.getElementById("bagianPertanyaan").style.display = "none";
         const pesan = document.getElementById("pesanKonfirmasi");
         pesan.style.display = "block";
-    
+        // Jika member maka akan kembali ke layar utama
         if (isMember) {
           pesan.innerHTML = `
             <br>Hubungi sponsor anda, untuk info lebih lanjut</br>
             <button onclick="tutupModal()" class="button button-primary" style="margin-top:10px;">OK</button>
           `;
         } else {
+          // Jika tidak maka akan lanjut
           pesan.innerHTML = `
             <br>Kami siap membantu anda, untuk info lebih lanjut</br>
             <button onclick="lanjutKeLink()" class="button button-primary" style="margin-top:10px;">INFOKAN SAYA</button>
