@@ -1,2 +1,0 @@
-# beratidealku
- landingpage

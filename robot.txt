@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://amihaji.github.io/beratidealku1/sitemap.xml
